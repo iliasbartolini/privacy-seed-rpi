@@ -113,7 +113,7 @@ omxplayer -o local example.mp3
 
 ```
 sudo apt-get install git --yes
-git clone https://github.com/iliasbartolini/privacy-seed-rpi
+git clone https://github.com/iliasbartolini/privacy-seed-rpi.git
 cd privacy-seed-rpi
 ./setup.sh
 ./privacy-seed.sh
