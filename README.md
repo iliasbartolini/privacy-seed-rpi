@@ -6,21 +6,26 @@ Raspberry PI installation notes and custom script for the Privacy Seed
 ## Base image setup
 
 Download and Install raspbian Pi image
+
 https://www.raspberrypi.org/downloads/raspbian/
+
 https://www.raspberrypi.org/documentation/installation/installing-images/linux.md
 
 ### Lite
+```
 wget https://downloads.raspberrypi.org/raspbian_latest -O raspbian-latest.zip
 unzip raspbian-latest.zip
 sudo dd bs=4M if=2018-06-27-raspbian-stretch.img of=/dev/sda conv=fsync
 sync
+```
 
 ### Full/GUI
+```
 wget https://downloads.raspberrypi.org/raspbian_lite_latest -O raspbian-lite-latest.zip
 unzip raspbian-lite-latest.zip
 sudo dd bs=4M if=2018-06-27-raspbian-stretch-lite.img of=/dev/sda conv=fsync
 sync
-
+```
 
 ### Basic config
 
@@ -58,13 +63,16 @@ ssh-copy-id pi@$PI_IP_ADDRESS
 
 ### Upgrade
 
+```
 sudo apt-get update
 sudo apt-get upgrade
 
 sudo apt-get install unattended-upgrades --yes
+```
 
 ### Custom user login (optional)
 
+```
 sudo apt-get install fortune fortunes cowsay finger --yes
 
 echo '
@@ -81,13 +89,16 @@ finger
 echo '\'''\''
 uptime
 ' >> ~/.profile
+```
 
 ## Audio tools (work in progress)
 
 ### Testing the speaker (no alsa needed)
+```
 sudo apt-get install omxplayer --yes
 wget http://rpf.io/lamp3 -O example.mp3 --no-check-certificate
 omxplayer -o local example.mp3
+```
 
 ###
 
@@ -98,46 +109,46 @@ omxplayer -o local example.mp3
 
 
 
-
-## Using python serial
-
-sudo apt-get install python-serial --yes
-
-
 # Privacy seed integration (work in progress)
 
+```
+sudo apt-get install python-serial --yes
+
 python serial_forward.py /dev/ttyUSB0 /dev/ttyUSB1 > /dev/random
+```
 
 ## RNG tools
-sudo apt-get install rng-tools --yes
+
+`sudo apt-get install rng-tools --yes`
 
 ### Check entropy available
-watch -n 1 cat /proc/sys/kernel/random/entropy_avail
+`watch -n 1 cat /proc/sys/kernel/random/entropy_avail`
 
 ### Flush entropy by dumping /dev/random
-hexdump /dev/random
+`hexdump /dev/random`
 
 
 # Deprecated parts
 
 ## I2C Setup (deprecated - not necessary anymore)
 
+```
 sudo apt-get install python-dev python-rpi.gpio --yes
-
 sudo apt-get install i2c-tools --yes
-
 sudo apt-get install python-smbus --yes
+```
+`sudo raspi-config`  > interfacing > I2C
 
-sudo raspi-config  > interfacing > I2C
+Testing I2C devices
 
-### Testing I2C devices
-
-sudo i2cdetect -y 1
+`sudo i2cdetect -y 1`
 
 
 ## Using pigpio module (deprecated - not necessary anymore)
 
+```
 sudo apt-get install python3-pigpio -d
 
 sudo systemctl enable pigpiod
 sudo systemctl start pigpiod
+```
