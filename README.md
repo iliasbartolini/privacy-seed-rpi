@@ -112,9 +112,11 @@ omxplayer -o local example.mp3
 # Privacy seed integration (work in progress)
 
 ```
-sudo apt-get install python-serial --yes
-
-python serial_forward.py /dev/ttyUSB0 /dev/ttyUSB1 > /dev/random
+sudo apt-get install git --yes
+git clone https://github.com/iliasbartolini/privacy-seed-rpi
+cd privacy-seed-rpi
+./setup.sh
+./privacy-seed.sh
 ```
 
 ## RNG tools
