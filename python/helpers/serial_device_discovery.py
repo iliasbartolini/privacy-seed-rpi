@@ -1,25 +1,22 @@
-#!/usr/bin/env python3
-
 import serial
-import sys
-import io
 
-if (len(sys.argv) != 2):
-    print( "command line: serial_device_discovery.py input_port" )
-    sys.exit()
+HEART_RATE_SENSOR_ID = "HRT"
+DOTSTAR_LED_CONTROLLER_ID = "DotStar"
 
-serial_input_port = sys.argv[1]
+class SerialDeviceDiscovery:
 
-serial_input = serial.Serial(serial_input_port, 115200, timeout = 5)
-serial_input.setDTR()
+    def __init__(self, device_port_1, device_port_2):
+        self.port_discovery(device_port_1)
+        self.port_discovery(device_port_2)
 
-device_name = serial_input.readline()
-print("Device name:")
-print(device_name)
+    def port_discovery(self, device_port):
+        serial_port = serial.Serial(device_port, 115200, timeout = 5)
+        serial_port.setDTR()
+        device_name = serial_port.readline().decode().rstrip()
 
-print("Data forward:")
-while 1:
-    input_byte = serial_input.read()
-    # serial_output.write(input_byte)
-    sys.stdout.buffer.write(input_byte)
-    sys.stdout.flush()
+        if HEART_RATE_SENSOR_ID in device_name:
+            self.serial_input = serial_port
+        elif DOTSTAR_LED_CONTROLLER_ID in device_name:
+            self.serial_output = serial_port
+        else:
+            raise Exception("I/O device {} on {} not recognized".format(device_name, device_port))
