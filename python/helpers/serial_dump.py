@@ -15,6 +15,6 @@ ser.setDTR()
 ser.flush()
 
 while 1:
-   sys.stdout.write(ser.read()) #RAW data
+   sys.stdout.buffer.write(ser.read()) #RAW data
    # sys.stdout.write(ser.readline().decode())
    sys.stdout.flush()

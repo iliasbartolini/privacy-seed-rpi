@@ -19,5 +19,5 @@ print("Data forward:")
 while 1:
     input_byte = serial_input.read()
     # serial_output.write(input_byte)
-    sys.stdout.write(input_byte)
+    sys.stdout.buffer.write(input_byte)
     sys.stdout.flush()
