@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo apt-get install python-serial --yes
+sudo apt-get install python3-serial --yes
