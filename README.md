@@ -95,9 +95,13 @@ uptime
 
 ### Testing the speaker (no alsa needed)
 ```
+wget http://rpf.io/lamp3 -O small_example.mp3 --no-check-certificate
+wget 'http://soundbible.com/grab.php?id=2162&type=wav' -O heartbeat.wav
+
 sudo apt-get install omxplayer --yes
-wget http://rpf.io/lamp3 -O example.mp3 --no-check-certificate
-omxplayer -o local example.mp3
+omxplayer -o local small_example.mp3
+omxplayer -o local heartbeat.wav
+
 ```
 
 ###
@@ -107,6 +111,8 @@ omxplayer -o local example.mp3
 ### Bluetooth speaker
 // sudo apt-get install bluetooth bluez blueman
 
+- try pulseaudio
+- try bluez
 
 
 # Privacy seed integration (work in progress)
