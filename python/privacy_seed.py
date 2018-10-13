@@ -11,7 +11,7 @@ HRT_SENSOR_BEAT_RATE = b'\x02'
 HRT_SENSOR_MAGIC     = b'\x03' # don't try me... seriously! :)
 
 if (len(sys.argv) != 3):
-    print( "command line: serial_forward.py device_port_1 device_port_2" )
+    print( "command line: privacy_seed.py device_port_1 device_port_2" )
     sys.exit()
 
 io_devices = SerialDeviceDiscovery(sys.argv[1], sys.argv[2])
