@@ -15,7 +15,7 @@ https://www.raspberrypi.org/documentation/installation/installing-images/linux.m
 ```
 wget https://downloads.raspberrypi.org/raspbian_latest -O raspbian-latest.zip
 unzip raspbian-latest.zip
-sudo dd bs=4M if=2018-06-27-raspbian-stretch.img of=/dev/sda conv=fsync
+sudo dd bs=4M if=2018-06-27-raspbian-stretch.img of=/dev/sda conv=fsync  status=progress
 sync
 ```
 
@@ -23,7 +23,7 @@ sync
 ```
 wget https://downloads.raspberrypi.org/raspbian_lite_latest -O raspbian-lite-latest.zip
 unzip raspbian-lite-latest.zip
-sudo dd bs=4M if=2018-06-27-raspbian-stretch-lite.img of=/dev/sda conv=fsync
+sudo dd bs=4M if=2018-06-27-raspbian-stretch-lite.img of=/dev/sda conv=fsync  status=progress
 sync
 ```
 
@@ -67,7 +67,8 @@ ssh-copy-id pi@$PI_IP_ADDRESS
 sudo apt-get update
 sudo apt-get upgrade
 
-sudo apt-get install unattended-upgrades --yes
+## not for pi-seed
+## sudo apt-get install unattended-upgrades --yes
 ```
 
 ### Custom user login (optional)
@@ -102,6 +103,8 @@ sudo apt-get install omxplayer --yes
 omxplayer -o local small_example.mp3
 omxplayer -o local heartbeat.wav
 
+
+sudo apt-get install mplayer --yes
 ```
 
 ###
@@ -109,10 +112,58 @@ omxplayer -o local heartbeat.wav
 //sudo apt-get install alsa-utils mpg123 --yes
 
 ### Bluetooth speaker
-// sudo apt-get install bluetooth bluez blueman
 
-- try pulseaudio
-- try bluez
+sudo apt-get install bluetooth bluez blueman --yes
+lsusb | grep Bluetooth | cut -d' ' -f6
+
+sudo btmon
+
+sudo apt-get install pulseaudio-module-bluetooth --yes
+pulseaudio -k
+pulseaudio --start  
+  ?? sudo ??
+
+sudo pactl load-module module-bluetooth-discover
+> /etc/pulse/default.pa
+#module-bluetooth-policy
+#module-bluez5-device
+#module-bluez5-discover
+
+lsusb | grep Bluetooth | cut -d' ' -f6
+
+hciconfig
+
+sudo bluetoothctl -a
+select 5C:F3:70:8D:C6:D7
+devices
+power on
+agent on
+default-agent
+scan on
+-
+scan off
+trust XX:XX:XX:XX:XX:XX
+pair XX:XX:XX:XX:XX:XX
+connect XX:XX:XX:XX:XX:XX
+quit
+
+?? sudo vi /etc/systemd/system/bluetooth.service.d/a2dp.conf
+?? sudo vi /etc/systemd/system/bluetooth.target.wants/bluetooth.service
+ExecStart=/usr/lib/bluetooth/bluetoothd --plugin=a2dp
+# ?? sudo systemctl restart bluetooth
+?? systemctl daemon-reload
+
+
+
+### Stuttering and audio interruptions
+# If a low-power machine stutters (audio breaks up), you can try adding the following to /etc/pulse/daemon.conf:
+high-priority = no
+nice-level = -1
+realtime-scheduling = yes
+realtime-priority = 5
+flat-volumes = no
+resample-method = speex-float-1
+default-sample-rate = 48000
 
 
 # Privacy seed integration (work in progress)
@@ -121,7 +172,7 @@ omxplayer -o local heartbeat.wav
 sudo apt-get install git --yes
 git clone https://github.com/iliasbartolini/privacy-seed-rpi.git
 cd privacy-seed-rpi
-./setup.sh
+./privacy-seed-setup.sh
 ./privacy-seed.sh
 ```
 
