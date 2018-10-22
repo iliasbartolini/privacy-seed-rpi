@@ -172,7 +172,7 @@ default-sample-rate = 48000
 sudo apt-get install git --yes
 git clone https://github.com/iliasbartolini/privacy-seed-rpi.git
 cd privacy-seed-rpi
-./privacy-seed-setup.sh
+./setup.sh
 ./privacy-seed.sh
 ```
 
