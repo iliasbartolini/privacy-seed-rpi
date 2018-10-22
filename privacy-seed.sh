@@ -2,6 +2,6 @@
 
 while [ 1 ]
 do
-  sudo ./python/privacy_seed.py /dev/ttyUSB1 /dev/ttyUSB2
+  sudo ./python/privacy_seed.py /dev/ttyUSB0 /dev/ttyUSB1
   sleep 5
 done
