@@ -9,6 +9,7 @@
 # Description:       Enable service provided by daemon.
 ### END INIT INFO
 
+sudo rm /var/log/privacy-seed.log
 sudo touch /var/log/privacy-seed.log
 sudo chmod 777 /var/log/privacy-seed.log
 
