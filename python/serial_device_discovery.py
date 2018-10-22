@@ -19,4 +19,4 @@ class SerialDeviceDiscovery:
         elif DOTSTAR_LED_CONTROLLER_ID in device_name:
             self.serial_output = serial_port
         else:
-            raise Exception("I/O device {} on {} not recognized".format(device_name, device_port))
+            raise Exception("I/O device '{}' on '{}' not recognized".format(device_name, device_port))
