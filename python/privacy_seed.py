@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 
+import time
+
 import sys
 from serial_device_discovery import SerialDeviceDiscovery
 from random_entropy_adder import RandomEntropyAdder
+from sound_mixer import SoundMixer
 from pprint import pprint
 
 HRT_SENSOR_UNCOVERED = b'\x00'
@@ -13,6 +16,10 @@ HRT_SENSOR_MAGIC     = b'\x03' # don't try me... seriously! :)
 if (len(sys.argv) != 3):
     print( "command line: privacy_seed.py device_port_1 device_port_2" )
     sys.exit()
+
+
+sound_mixer = SoundMixer()
+sound_mixer.play_water_droplet()
 
 io_devices = SerialDeviceDiscovery(sys.argv[1], sys.argv[2])
 
