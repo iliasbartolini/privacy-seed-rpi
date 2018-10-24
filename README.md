@@ -98,6 +98,9 @@ uptime
 ```
 wget http://rpf.io/lamp3 -O small_example.mp3 --no-check-certificate
 wget 'http://soundbible.com/grab.php?id=2162&type=wav' -O heartbeat.wav
+wget 'http://soundbible.com/grab.php?id=1073&type=wav' -O pin.wav
+wget 'http://soundbible.com/grab.php?id=6&type=wav' -O ambient_cave.wav
+wget 'http://soundbible.com/grab.php?id=384&type=wav' -O water_droplet.wav
 
 sudo apt-get install omxplayer --yes
 omxplayer -o local small_example.mp3
