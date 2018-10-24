@@ -3,6 +3,13 @@
 Raspberry PI installation notes and custom script for the Privacy Seed
 
 
+## TODO
+
+- Slow shoutdown: process kill not handled
+- Logrotate
+- 
+
+
 ## Base image setup
 
 Download and Install raspbian Pi image
