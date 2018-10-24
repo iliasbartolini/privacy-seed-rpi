@@ -14,7 +14,7 @@ sudo touch /var/log/privacy-seed.log
 sudo chmod 777 /var/log/privacy-seed.log
 
 cd /home/pi/privacy-seed-rpi/
-git pull -r
+# git pull -r
 
 while [ 1 ]
 do
