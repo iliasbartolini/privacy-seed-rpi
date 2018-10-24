@@ -94,7 +94,14 @@ uptime
 
 ## Audio tools (work in progress)
 
+```
+sudo apt-get install alsa-utils mpg123 --yes
+alsamixer
+```
+  => Increase volume to ~90%
+
 ### Testing the speaker (no alsa needed)
+
 ```
 wget http://rpf.io/lamp3 -O small_example.mp3 --no-check-certificate
 wget 'http://soundbible.com/grab.php?id=2162&type=wav' -O heartbeat.wav
@@ -110,9 +117,6 @@ omxplayer -o local heartbeat.wav
 sudo apt-get install mplayer --yes
 ```
 
-###
-
-//sudo apt-get install alsa-utils mpg123 --yes
 
 ### Bluetooth speaker
 
