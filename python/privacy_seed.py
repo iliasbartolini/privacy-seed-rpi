@@ -17,7 +17,7 @@ if (len(sys.argv) != 3):
 
 
 sound_mixer = SoundMixer()
-sound_mixer.play_water_droplet()
+sound_mixer.play_base()
 
 io_devices = SerialDeviceDiscovery(sys.argv[1], sys.argv[2])
 
@@ -40,6 +40,7 @@ with RandomEntropyAdder() as random_entropy_adder:
             io_devices.serial_output.write(data_byte)
             io_devices.serial_output.flush()
             hrt_rate = int.from_bytes(data_byte, byteorder='big', signed=False)
+            sound_mixer.play_heartbeat()
             sys.stdout.write('\nheart rate: {}\n'.format(hrt_rate))
         elif input_byte == HRT_SENSOR_MAGIC:
             sys.stdout.write('\nMAGIC!\n')

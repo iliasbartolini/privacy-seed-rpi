@@ -10,10 +10,10 @@ sound_mixer.play_base()
 
 time.sleep(8)
 
-sound_mixer.play_water_droplet()
+sound_mixer.play_water_droplet_loop()
 
 time.sleep(2)
 
-sound_mixer.play_heartbeat()
+sound_mixer.play_heartbeat_loop()
 
 time.sleep(30)

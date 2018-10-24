@@ -16,14 +16,17 @@ class SoundMixer:
         self.base_sound = pygame.mixer.Sound('media/base.ogg')
         self.base_sound.set_volume(.6)
 
-    def play_pin(self):
+    def play_pin_loop(self):
         self.pin_sound.play(-1)
 
-    def play_water_droplet(self):
+    def play_water_droplet_loop(self):
         self.water_droplet_sound.play(-1)
 
-    def play_heartbeat(self):
+    def play_heartbeat_loop(self):
         self.heartbeat_sound.play(-1)
+
+    def play_heartbeat(self):
+        self.heartbeat_sound.play()
 
     def play_base(self):
         self.base_sound.play(-1)
