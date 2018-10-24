@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import time
 import subprocess
 import pygame
@@ -6,9 +7,9 @@ from pprint import pprint
 
 pygame.init()
 
-# heartbeat_sound = pygame.mixer.Sound('heartbeat.wav')
-pin_sound = pygame.mixer.Sound('pin.wav')
-water_droplet_sound = pygame.mixer.Sound('water_droplet.wav')
+# heartbeat_sound = pygame.mixer.Sound('media/heartbeat.wav')
+pin_sound = pygame.mixer.Sound('media/pin.wav')
+water_droplet_sound = pygame.mixer.Sound('media/water_droplet.wav')
 
 # def play_heartbeat():
 #     heartbeat_sound.play(-1)
