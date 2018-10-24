@@ -37,10 +37,10 @@ with RandomEntropyAdder() as random_entropy_adder:
             sys.stdout.write('*')
         elif input_byte == HRT_SENSOR_BEAT_RATE:
             data_byte = io_devices.serial_input.read()
+            sound_mixer.play_heartbeat()
             io_devices.serial_output.write(data_byte)
             io_devices.serial_output.flush()
             hrt_rate = int.from_bytes(data_byte, byteorder='big', signed=False)
-            sound_mixer.play_heartbeat()
             sys.stdout.write('\nheart rate: {}\n'.format(hrt_rate))
         elif input_byte == HRT_SENSOR_MAGIC:
             sys.stdout.write('\nMAGIC!\n')
