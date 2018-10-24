@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-import time
-
 import sys
 from serial_device_discovery import SerialDeviceDiscovery
 from random_entropy_adder import RandomEntropyAdder
