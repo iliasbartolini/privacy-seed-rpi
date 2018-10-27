@@ -1,7 +1,7 @@
 # Privacy Seed RPI
 
 Raspberry PI installation notes and custom integration script.
-This component is part of the [https://privacy-seed.org/](Privacy Seed) project.
+This component is part of the [Privacy Seed](https://privacy-seed.org/) project.
 
 ## TODO
 
