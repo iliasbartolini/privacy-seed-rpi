@@ -1,13 +1,12 @@
 # Privacy Seed RPI
 
-Raspberry PI installation notes and custom script for the Privacy Seed
-
+Raspberry PI installation notes and custom integration script.
+This component is part of the [https://privacy-seed.org/](Privacy Seed) project.
 
 ## TODO
 
 - Slow shoutdown: process kill not handled
 - Logrotate
-- 
 
 
 ## Base image setup
